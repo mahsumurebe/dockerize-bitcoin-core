@@ -1,7 +1,7 @@
 #!/bin/bash
 LOG_FILE="/data/logs/notification.log"
 LOG_DIR=$(dirname "$LOG_FILE")
-RESULT=$(curl -k -X POST "http://${NOTIFIER_APP_HOST}:${NOTIFIER_APP_PORT}/processTransaction" -H "Content-Type: application/json" -d "{\"txId\":\"$1\"}")
+RESULT=$(curl -k -X POST "http://${NOTIFIER_APP_HOST}:${NOTIFIER_APP_PORT}/transaction/process/BTC" -H "Content-Type: application/json" -d "{\"txId\":\"$1\"}")
 
 if [ -z "$RESULT" ] || test -z "$RESULT"; then
         RESULT="{\"status\":\"error\",\"message\":\"No transaction was found for us.\",\"error\":{}}"
