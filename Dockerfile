@@ -40,6 +40,8 @@ COPY "docker-entrypoint.sh" /entrypoint.sh
 COPY "config.conf" "${COIN_CONF_FILE}"
 COPY "scripts/" "${COIN_SCRIPTS}/"
 
+RUN ln -s "${COIN_SCRIPTS}/move.sh" "/usr/local/bin/move"
+
 RUN groupadd -g 1000 bitcoin \
     && useradd -u 1000 -g bitcoin -m -d /home/bitcoin bitcoin \
     && chown -R bitcoin "${COIN_ROOT_DIR}/"
