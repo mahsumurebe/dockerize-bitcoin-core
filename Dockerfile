@@ -24,7 +24,7 @@ RUN mkdir -p "${COIN_ROOT_DIR}" \
 WORKDIR "${COIN_ROOT_DIR}"
 
 RUN apt-get update -y
-RUN apt-get install -y curl gosu ca-certificates apt-transport-https jq
+RUN apt-get install -y curl gosu ca-certificates apt-transport-https jq bc
 RUN apt-get clean
 
 RUN curl -L "${BINARY_URL}" -o "${COIN_TMP}/${TARBALL_NAME}-x86_64-linux-gnu.tar.gz"
