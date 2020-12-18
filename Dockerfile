@@ -24,7 +24,7 @@ RUN mkdir -p "${COIN_ROOT_DIR}" \
 WORKDIR "${COIN_ROOT_DIR}"
 
 RUN apt-get update -y
-RUN apt-get install -y curl gosu ca-certificates apt-transport-https jq
+RUN apt-get install -y curl gosu ca-certificates apt-transport-https jq bc
 RUN apt-get clean
 
 RUN curl -L "${BINARY_URL}" -o "${COIN_TMP}/${TARBALL_NAME}-x86_64-linux-gnu.tar.gz"
@@ -39,7 +39,7 @@ RUN apt-get clean -yqq 2>/dev/null
 COPY "docker-entrypoint.sh" /entrypoint.sh
 COPY "config.conf" "${COIN_CONF_FILE}"
 COPY "scripts/" "${COIN_SCRIPTS}/"
-
+RUN ln -s "${COIN_SCRIPTS}/move.sh" "/usr/bin/move"
 RUN groupadd -g 1000 bitcoin \
     && useradd -u 1000 -g bitcoin -m -d /home/bitcoin bitcoin \
     && chown -R bitcoin "${COIN_ROOT_DIR}/"
