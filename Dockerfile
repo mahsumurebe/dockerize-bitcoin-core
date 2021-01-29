@@ -2,7 +2,7 @@ FROM debian:bullseye-slim
 LABEL maintainer="Mahsum UREBE <info@mahsumurebe.com>"
 LABEL description="Dockerised Bitcoin Core"
 
-ENV COIN_VERSION="0.20.1"
+ENV COIN_VERSION="0.21.0"
 ENV TARBALL_NAME="bitcoin-${COIN_VERSION}"
 ENV BINARY_URL="https://bitcoincore.org/bin/bitcoin-core-${COIN_VERSION}/${TARBALL_NAME}-x86_64-linux-gnu.tar.gz"
 
